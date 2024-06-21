@@ -1,5 +1,5 @@
 #!/bin/bash
 
 git add --all
-git commit -m "$(date)"
+git commit -m "$1"
 git push -u origin main 
