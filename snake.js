@@ -9,7 +9,7 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
 document.addEventListener("keydown",changeDirection);
-document.getElementById("score").innerHTML = score;
+document.getElementById("score").innerHTML = "Points: " + score;
 
 createFood();
 main();
@@ -25,7 +25,7 @@ function main() {
             main();
         }, 100);
     } else {
-        alert("GAME OVER\nYour score: " + score);
+        alert("GAME OVER\nYou get " + score + " points");
     }
 }
     
@@ -60,7 +60,7 @@ function advanceSnake(){
     snake.unshift(head);
     if (head.x === foodX && head.y === foodY) {
         score++;
-        document.getElementById("score").innerHTML = score;
+        document.getElementById("score").innerHTML = "Points: " + score;
         createFood();
     } else {
         snake.pop();
