@@ -94,9 +94,8 @@ function changeDirection(event) {
     const goDown = dy === 10;
     const goRight = dx === 10;
     const goLeft = dx === -10;
-    if(keyPressed === LEFT_KEY && !goRight){dx = -10; dy = 0;}
-    if(keyPressed === RIGHT_KEY && !goLeft){dx = 10; dy = 0;}
-    if(keyPressed === UP_KEY && !goDown){dx = 0; dy = -10;}
-    if(keyPressed === DOWN_KEY && !goUp){dx = 0; dy = 10;}
-    changeDirection = true;
+    if(keyPressed === LEFT_KEY && !goRight && !goLeft){dx = -10; dy = 0;changeDirection = true;}
+    if(keyPressed === RIGHT_KEY && !goLeft && !goRight){dx = 10; dy = 0;changeDirection = true;}
+    if(keyPressed === UP_KEY && !goDown && !goUp){dx = 0; dy = -10;changeDirection = true;}
+    if(keyPressed === DOWN_KEY && !goUp && !goDown){dx = 0; dy = 10; changeDirection = true;}
 }
