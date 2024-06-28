@@ -33,7 +33,11 @@ function main(instance) {
             main(instance);
         }, gameSpeed);
     } else {
-        alert("GAME OVER\nYou get " + score + " points");
+        if (score < 4) {
+            alert("GAME OVER\nYou get " + score + " points\nProtip: you move using arrow keys");
+        } else {
+            alert("GAME OVER\nYou get " + score + " points");
+        }
     }
 }
     
