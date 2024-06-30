@@ -11,6 +11,7 @@ let changingDirection;
 let colors = ['blue', 'green','lightblue','darkblue','lightgreen','darkgreen','orange',];
 let colorI = 1;
 let gameSpeed = 100;
+let lastScore = 0;
 
 //idk what 
 const canvas = document.getElementById("gameCanvas");
@@ -31,6 +32,11 @@ function main(instance) {
             advanceSnake();
             drawSnake();
             main(instance);
+            if (score > lastScore + 1) {
+                alert("Indian antycheat detect some suspicious activity\nPlease contact police and tell them what have you done");
+                return;
+            }
+            lastScore = score;
         }, gameSpeed);
     } else {
         if (score < 4) {
@@ -117,6 +123,7 @@ function changeDirection(event) {
     if(keyPressed === UP_KEY && !goDown && !goUp){dx = 0; dy = -20;changeDirection = true;}
     if(keyPressed === DOWN_KEY && !goUp && !goDown){dx = 0; dy = 20; changeDirection = true;}
 }
+
 function manageUserInput(event) {
     const keyPressed = event.keyCode;
     const SPEED_UP = 190;
@@ -131,13 +138,12 @@ function manageUserInput(event) {
     if (keyPressed === SHOW_KEYBINDS) showKeybinds();
     if (keyPressed === CHANGE_COLOR) changeColor();
     if (keyPressed === RESTART) start();
-    
-    
+}
 
-}
 function showKeybinds() {
-    alert("h - show help\n, - speed down\n. - speed up\n\' - reset speed\ne - change color\nr - restart");
+    alert("h - show help\n, - speed down\n. - speed up\n\' - reset speed\ne~ - change color\nr - restart");
 }
+
 function start() {
     dx = 20;
     dy = 0;
@@ -150,6 +156,7 @@ function start() {
     gameInstance++;
     main(gameInstance);
 }
+
 function changeColor() {
     colorI++
     if (colorI >= colors.length) colorI = 0;
